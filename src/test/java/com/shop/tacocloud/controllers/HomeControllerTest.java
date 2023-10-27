@@ -1,4 +1,4 @@
-package com.shop.tacocloud.controller;
+package com.shop.tacocloud.controllers;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

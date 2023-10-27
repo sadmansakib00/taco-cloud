@@ -1,7 +1,7 @@
 package com.shop.tacocloud.converters;
 
-import com.shop.tacocloud.model.Ingredient;
-import com.shop.tacocloud.model.Ingredient.Type;
+import com.shop.tacocloud.models.Ingredient;
+import com.shop.tacocloud.models.Ingredient.Type;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 

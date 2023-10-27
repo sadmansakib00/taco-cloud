@@ -1,4 +1,4 @@
-package com.shop.tacocloud.model;
+package com.shop.tacocloud.models;
 
 import lombok.Data;
 @Data
