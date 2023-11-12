@@ -1,8 +1,11 @@
 package com.shop.tacocloud.repositories;
 
+import com.shop.tacocloud.models.Ingredient;
 import com.shop.tacocloud.models.IngredientRef;
 import com.shop.tacocloud.models.Taco;
 import com.shop.tacocloud.models.TacoOrder;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.PreparedStatementCreatorFactory;
@@ -103,13 +106,13 @@ public class JdbcOrderRepository implements OrderRepository {
     }
 
     private void saveIngredientRefs(
-            long tacoId, List<IngredientRef> ingredientRefs) {
+            long tacoId, @NotNull @Size(min = 1, message = "You must choose at least 1 ingredient") List<Ingredient> ingredients) {
         int key = 0;
-        for(IngredientRef ingredientRef : ingredientRefs) {
+        for(Ingredient ingredient : ingredients) {
             jdbcOperations.update(
                     "insert into Ingredient_Ref (ingredient, taco, taco_key) "
                     + "values (?, ?, ?)",
-                    ingredientRef.getIngredient(), tacoId, key++
+                    ingredient, tacoId, key++
             );
         }
     }

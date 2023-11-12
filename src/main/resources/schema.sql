@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS Taco (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
     taco_order BIGINT NOT NULL,
+    taco_order_key BIGINT NOT NULL,
     created_at TIMESTAMP NOT NULL
     );
 
