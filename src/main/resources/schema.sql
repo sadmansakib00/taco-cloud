@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS Taco_Order (
     delivery_Name VARCHAR(50) NOT NULL,
     delivery_Street VARCHAR(50) NOT NULL,
     delivery_City VARCHAR(50) NOT NULL,
-    delivery_State VARCHAR(2) NOT NULL,
+    delivery_State VARCHAR(20) NOT NULL,
     delivery_Zip VARCHAR(10) NOT NULL,
     cc_number VARCHAR(16) NOT NULL,
     cc_expiration VARCHAR(5) NOT NULL,
