@@ -20,7 +20,8 @@ CREATE TABLE IF NOT EXISTS Taco (
 
 CREATE TABLE IF NOT EXISTS Ingredient_Ref (
     ingredient VARCHAR(4) NOT NULL,
-    taco BIGINT NOT NULL
+    taco BIGINT NOT NULL,
+    taco_key BIGINT NOT NULL
     );
 
 CREATE TABLE IF NOT EXISTS Ingredient (

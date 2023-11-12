@@ -1,5 +1,6 @@
 package com.shop.tacocloud.repositories;
 
+import com.shop.tacocloud.models.IngredientRef;
 import com.shop.tacocloud.models.Taco;
 import com.shop.tacocloud.models.TacoOrder;
 import org.springframework.jdbc.core.JdbcOperations;
@@ -39,9 +40,9 @@ public class JdbcOrderRepository implements OrderRepository {
                         + "delivery_state, delivery_zip, cc_number, "
                         + "cc_expiration, cc_cvv, placed_at) "
                         + "values (?,?,?,?,?,?,?,?,?)",
-                Types.VARCHAR, Types.VARCHAR, Types.VARCHAR,
-                Types.VARCHAR, Types.VARCHAR, Types.VARCHAR,
-                Types.VARCHAR, Types.VARCHAR, Types.TIMESTAMP
+                        Types.VARCHAR, Types.VARCHAR, Types.VARCHAR,
+                        Types.VARCHAR, Types.VARCHAR, Types.VARCHAR,
+                        Types.VARCHAR, Types.VARCHAR, Types.TIMESTAMP
             );
         pscf.setReturnGeneratedKeys(true);
 
@@ -99,6 +100,18 @@ public class JdbcOrderRepository implements OrderRepository {
 
         saveIngredientRefs(tacoId, taco.getIngredients());
         return tacoId;
+    }
+
+    private void saveIngredientRefs(
+            long tacoId, List<IngredientRef> ingredientRefs) {
+        int key = 0;
+        for(IngredientRef ingredientRef : ingredientRefs) {
+            jdbcOperations.update(
+                    "insert into Ingredient_Ref (ingredient, taco, taco_key) "
+                    + "values (?, ?, ?)",
+                    ingredientRef.getIngredient(), tacoId, key++
+            );
+        }
     }
 
 }
