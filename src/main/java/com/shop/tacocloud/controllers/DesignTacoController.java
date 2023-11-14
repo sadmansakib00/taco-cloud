@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -63,6 +64,7 @@ public class DesignTacoController {
             return "design";
         }
         tacoOrder.addTaco(taco);
+        tacoOrder.setPlacedAt(new Date());
         log.info("Processing taco: {}", taco);
         return "redirect:/orders/current";
     }
