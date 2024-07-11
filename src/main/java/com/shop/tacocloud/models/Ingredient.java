@@ -1,10 +1,16 @@
 package com.shop.tacocloud.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
+import lombok.NoArgsConstructor;
 
 @Data
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor(force=true)
 @Table
 public class Ingredient {
 
